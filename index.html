@@ -2,67 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Calliope - AI Assistant</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Calliope</title>
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
     <!-- Favicon (Optional) -->
     <link rel="icon" href="favicon.ico">
 </head>
-<body class="d-flex flex-column min-vh-100">
 
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #955E42;">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Calliope</a>
-        <!-- Dark Mode Toggle -->
-        <div class="form-check form-switch text-white">
-            <input class="form-check-input" type="checkbox" id="darkModeToggle">
-            <label class="form-check-label" for="darkModeToggle">Dark Mode</label>
-        </div>
-      </div>
-    </nav>
+<body>
 
     <!-- Main Content -->
-    <main class="flex-fill">
-      <div class="container my-4">
-        <div class="row justify-content-center">
-          <div class="col-md-8">
-
-            <!-- Title -->
-            <h1 class="text-center mb-4">Calliope AI Assistant</h1>
-
-            <!-- Conversation Container -->
-            <div id="conversationContainer" class="border rounded p-3 mb-4">
-              <!-- Conversation history will be appended here -->
-            </div>
-
-            <!-- Input Form -->
-            <form id="inputForm" class="d-flex">
-              <textarea id="userInput" class="form-control me-2" placeholder="Type your message here..." rows="1"></textarea>
-              <button type="submit" id="submitButton" class="btn btn-primary">Send</button>
+    <main id="mainContent" class="main-content">
+        <!-- Input Container -->
+        <h1 class="elegantshadow">Calliope</h1>
+        <div id="inputContainer" class="input-container">
+            <form id="inputForm" class="input-form">
+                <textarea id="userInput" class="input-textarea" placeholder="Begin Your Journey..." rows="1"></textarea>
+                <button type="submit" id="submitButton" class="send-button">Send</button>
             </form>
             <!-- Invalid Feedback -->
-            <div class="invalid-feedback d-block">
+            <div class="invalid-feedback">
                 Please enter a message.
             </div>
-
-          </div>
         </div>
-      </div>
+
+        <!-- Conversation Container (Initially Hidden) -->
+        <div id="conversationContainer" class="conversation-container hidden">
+            <!-- Conversation history will be appended here -->
+        </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="text-white text-center py-3 mt-auto" style="background-color: #955E42;">
-      &copy; 2024 Calliope AI Assistant
-    </footer>
-
+    <div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+    </div>
     <!-- Bootstrap Bundle JS (includes Popper) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom Script -->
     <script src="script.js"></script>
     <script src="darkmode.js"></script>
+    <script src="transition.js"></script>
     <!-- Include Marked.js -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <!-- Include DOMPurify -->
