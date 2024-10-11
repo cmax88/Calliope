@@ -16,7 +16,6 @@ h1 {
     font: inherit;
     text-transform: uppercase;
     text-align: center;
-    display: flex;
     font-size: 5em;
 }
 
@@ -61,8 +60,7 @@ h1 {
 .input-form {
     display: flex;
     width: 100%;
-    box-shadow: 
-      1px -1px 0 #00000000, -1px 2px 1px #00000000, -2px 4px 1px #00000000, -3px 6px 1px rgba(101, 0, 94, 1), -4px 8px 1px rgba(101, 0, 94, 1), -5px 10px 1px rgb(101 0 94 / 95%), -6px 12px 1px rgb(101 0 94 / 90%), -7px 14px 1px rgb(101 0 94 / 85%), -8px 16px 1px rgb(101 0 94 / 80%), -9px 18px 1px rgb(101 0 94 / 75%), -10px 20px 1px rgb(101 0 94 / 70%), -11px 22px 1px rgb(101 0 94 / 65%), -12px 24px 1px rgb(101 0 94 / 60%), -13px 26px 1px rgb(101 0 94 / 55%), -14px 28px 1px rgb(101 0 94 / 50%), -15px 30px 1px rgb(101 0 94 / 45%), -16px 32px 1px rgb(101 0 94 / 40%), -17px 34px 1px rgb(101 0 94 / 35%), -18px 36px 1px rgb(101 0 94 / 30%), -19px 38px 1px rgb(101 0 94 / 25%), -20px 40px 1px rgb(101 0 94 / 20%), -21px 42px 1px rgb(101 0 94 / 15%), -22px 44px 1px rgb(101 0 94 / 10%), -23px 46px 1px rgb(101 0 94 / 5%), -24px 48px 1px rgb(101 0 94 / 0%), -25px 50px 1px rgb(101 0 94 / 0%), -26px 52px 1px rgb(101 0 94 / 0%), -27px 54px 1px rgb(101 0 94 / 0%), -28px 56px 1px rgb(101 0 94 / 0%);
+    max-width: 800px;
 }
 
 .input-textarea {
