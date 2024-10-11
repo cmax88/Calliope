@@ -1,0 +1,128 @@
+/* style.css */
+
+/* Message Styles */
+.message {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.message.user {
+    align-items: flex-end;
+}
+
+.message.assistant {
+    align-items: flex-start;
+}
+
+.message .content {
+    max-width: 100%;
+    padding: 10px 15px;
+    border-radius: 15px;
+    position: relative;
+    word-wrap: break-word;
+    display: flex;
+    align-items: center;
+}
+
+.message.user .content {
+    background-color: #0d6efd;
+    color: #fff;
+    border-bottom-right-radius: 0;
+}
+
+.message.assistant .content {
+    background-color: #e9ecef;
+    color: #212529;
+    border-bottom-left-radius: 0;
+}
+
+
+/* Timestamp Styles */
+.message .timestamp {
+    font-size: 0.8em;
+    color: #6c757d;
+    margin-top: 5px;
+}
+
+/* Adjust the textarea to expand with content */
+#userInput {
+    overflow: hidden;
+    resize: none;
+}
+
+/* Remove resize handle for certain browsers */
+#userInput::-webkit-resizer {
+    display: none;
+}
+
+/* Input Validation Styles */
+.is-invalid {
+    border-color: #dc3545;
+}
+
+.is-invalid ~ .invalid-feedback {
+    display: block;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+body.dark-mode .navbar,
+body.dark-mode footer {
+    background-color: #1f1f1f;
+}
+
+body.dark-mode .message.assistant .content {
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+}
+
+body.dark-mode .message.user .content {
+    background-color: #0d6efd;
+    color: #ffffff;
+}
+
+body.dark-mode #conversationContainer {
+    background-color: #1f1f1f;
+    border-color: #3a3a3a;
+}
+
+body.dark-mode .form-control {
+    background-color: #2a2a2a;
+    color: #ffffff;
+    border-color: #3a3a3a;
+}
+
+body.dark-mode .btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+/* Scrollbar Styling (Optional) */
+#conversationContainer::-webkit-scrollbar {
+    width: 8px;
+}
+
+#conversationContainer::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+#conversationContainer::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+#conversationContainer::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Responsive Design Adjustments */
+@media (max-width: 576px) {
+    .message .content {
+        max-width: 100%;
+    }
+}
