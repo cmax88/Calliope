@@ -12,48 +12,49 @@
 </head>
 <body class="d-flex flex-column min-vh-100">
 
-    <!-- Navigation Bar (Optional) -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #955E42;">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Calliope</a>
+        <!-- Dark Mode Toggle -->
+        <div class="form-check form-switch text-white">
+            <input class="form-check-input" type="checkbox" id="darkModeToggle">
+            <label class="form-check-label" for="darkModeToggle">Dark Mode</label>
+        </div>
       </div>
     </nav>
 
     <!-- Main Content -->
     <main class="flex-fill">
-      <div class="container mt-4">
+      <div class="container my-4">
         <div class="row justify-content-center">
           <div class="col-md-8">
 
             <!-- Title -->
-            <h1 class="text-center mb-4">Calliope - AI Assistant</h1>
-
-        <!-- Dark Mode Toggle -->
-        <div class="form-check form-switch text-end">
-            <input class="form-check-input" type="checkbox" id="darkModeToggle">
-            <label class="form-check-label" for="darkModeToggle"></label>
-        </div>
-
-        <br>
+            <h1 class="text-center mb-4">Calliope AI Assistant</h1>
 
             <!-- Conversation Container -->
-            <div id="conversationContainer" class="border rounded p-3 mb-4" style="height: 75vh; overflow-y: auto; background-color: #f8f9fa;">
+            <div id="conversationContainer" class="border rounded p-3 mb-4">
               <!-- Conversation history will be appended here -->
             </div>
 
             <!-- Input Form -->
             <form id="inputForm" class="d-flex">
-              <textarea id="userInput" class="form-control me-2" placeholder="Type your message here..." rows="1" style="resize: none;"></textarea>
+              <textarea id="userInput" class="form-control me-2" placeholder="Type your message here..." rows="1"></textarea>
               <button type="submit" id="submitButton" class="btn btn-primary">Send</button>
             </form>
-            <br>
+            <!-- Invalid Feedback -->
+            <div class="invalid-feedback d-block">
+                Please enter a message.
+            </div>
+
           </div>
         </div>
       </div>
     </main>
 
-    <!-- Footer (Optional) -->
-    <footer class="bg-dark text-white text-center py-3">
+    <!-- Footer -->
+    <footer class="text-white text-center py-3 mt-auto" style="background-color: #955E42;">
       &copy; 2024 Calliope AI Assistant
     </footer>
 
@@ -62,5 +63,11 @@
     <!-- Custom Script -->
     <script src="script.js"></script>
     <script src="darkmode.js"></script>
+    <!-- Include Marked.js -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- Include DOMPurify -->
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@2.4.0/dist/purify.min.js"></script>
+
+
 </body>
 </html>

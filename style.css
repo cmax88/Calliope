@@ -1,4 +1,34 @@
-/* style.css */
+@import url('https://fonts.cdnfonts.com/css/unbounded');
+
+/* Global Styles */
+body {
+    background-color: #553739;
+    font-family: "Unbounded", sans-serif;
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+/* Navigation Bar */
+.navbar .form-check-input {
+    margin-left: 10px;
+}
+
+/* Conversation Container */
+#conversationContainer {
+    height: 60vh;
+    overflow-y: auto;
+    background-color: #ffffff;
+    background-color: var(--conversation-bg, #ffffff);
+    border: 1px solid #ced4da;
+}
+
+body.dark-mode #conversationContainer {
+    background-color: #1f1f1f;
+    border-color: #3a3a3a;
+}
 
 /* Message Styles */
 .message {
@@ -16,13 +46,13 @@
 }
 
 .message .content {
-    max-width: 100%;
+    max-width: 75%;
     padding: 10px 15px;
     border-radius: 15px;
     position: relative;
     word-wrap: break-word;
-    display: flex;
-    align-items: center;
+    display: inline-block;
+    animation: fadeIn 0.3s ease-in-out;
 }
 
 .message.user .content {
@@ -30,11 +60,70 @@
     color: #fff;
     border-bottom-right-radius: 0;
 }
-
-.message.assistant .content {
+.message.assistant .content h1,
+.message.assistant .content h2,
+.message.assistant .content h3,
+.message.assistant .content h4,
+.message.assistant .content h5,
+.message.assistant .content h6  {
     background-color: #e9ecef;
     color: #212529;
     border-bottom-left-radius: 0;
+    margin: 0 0 10px 0;
+}
+.message.assistant .content p {
+    margin: 0 0 10px 0;
+}
+.message.assistant .content ul,
+.message.assistant .content ol {
+    margin: 0 0 10px 20px;
+}
+.message.assistant .content code {
+    background-color: #f8f9fa;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: monospace;
+}
+body.dark-mode .message.assistant .content code {
+    background-color: #343a40;
+    color: #f8f9fa;
+}
+.message.assistant .content pre {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+    font-family: monospace;
+}
+body.dark-mode .message.assistant .content pre {
+    background-color: #343a40;
+    color: #f8f9fa;
+}
+.message.assistant .content a {
+    color: #007bff;
+    text-decoration: none;
+}
+.message.assistant .content a:hover {
+    text-decoration: underline;
+}
+.message.assistant .content blockquote {
+    border-left: 4px solid #ced4da;
+    padding-left: 10px;
+    margin: 0 0 10px 0;
+    color: #6c757d;
+}
+body.dark-mode .message.assistant .content blockquote {
+    border-left-color: #495057;
+    color: #adb5bd;
+}
+
+body.dark-mode .message.user .content {
+    background-color: #0d6efd;
+}
+
+body.dark-mode .message.assistant .content {
+    background-color: #2a2a2a;
+    color: #e0e0e0;
 }
 
 
@@ -45,56 +134,36 @@
     margin-top: 5px;
 }
 
-/* Adjust the textarea to expand with content */
+body.dark-mode .message .timestamp {
+    color: #adb5bd;
+}
+
+/* Input Styles */
 #userInput {
     overflow: hidden;
     resize: none;
 }
 
-/* Remove resize handle for certain browsers */
-#userInput::-webkit-resizer {
-    display: none;
+.form-control:focus {
+    box-shadow: none;
 }
 
-/* Input Validation Styles */
 .is-invalid {
     border-color: #dc3545;
 }
 
-.is-invalid ~ .invalid-feedback {
+.invalid-feedback {
+    display: none;
+}
+
+.is-invalid + .invalid-feedback {
     display: block;
 }
 
-/* Dark Mode Styles */
-body.dark-mode {
-    background-color: #121212;
-    color: #ffffff;
-}
-
-body.dark-mode .navbar,
-body.dark-mode footer {
-    background-color: #1f1f1f;
-}
-
-body.dark-mode .message.assistant .content {
-    background-color: #2a2a2a;
-    color: #e0e0e0;
-}
-
-body.dark-mode .message.user .content {
+/* Button Styles */
+.btn-primary {
     background-color: #0d6efd;
-    color: #ffffff;
-}
-
-body.dark-mode #conversationContainer {
-    background-color: #1f1f1f;
-    border-color: #3a3a3a;
-}
-
-body.dark-mode .form-control {
-    background-color: #2a2a2a;
-    color: #ffffff;
-    border-color: #3a3a3a;
+    border-color: #0d6efd;
 }
 
 body.dark-mode .btn-primary {
@@ -102,7 +171,22 @@ body.dark-mode .btn-primary {
     border-color: #0d6efd;
 }
 
-/* Scrollbar Styling (Optional) */
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
+/* Scrollbar Styling */
 #conversationContainer::-webkit-scrollbar {
     width: 8px;
 }
@@ -118,6 +202,18 @@ body.dark-mode .btn-primary {
 
 #conversationContainer::-webkit-scrollbar-thumb:hover {
     background: #555;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Responsive Design Adjustments */

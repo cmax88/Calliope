@@ -78,33 +78,52 @@ document.getElementById('submitButton').addEventListener('click', async () => {
 });
 
 // Function to append a message to the conversation container
-function appendMessage(role, content) {
-    const conversationContainer = document.getElementById('conversationContainer');
-
+function appendMessage(role, content, messageId) {
     const messageDiv = document.createElement('div');
     messageDiv.classList.add('message', role);
-
-    const messageContent = document.createElement('div');
-    messageContent.classList.add('content');
-    messageContent.innerText = content;
-
-    const timestamp = document.createElement('div');
-    timestamp.classList.add('timestamp');
-    timestamp.innerText = new Date().toLocaleTimeString();
-
-    if (role === 'user') {
-        messageDiv.appendChild(timestamp);
-        messageDiv.appendChild(messageContent);
-    } else {
-        messageDiv.appendChild(messageContent);
-        messageDiv.appendChild(timestamp);
+    if (messageId) {
+        messageDiv.id = messageId;
     }
 
+    const contentWrapper = document.createElement('div');
+    contentWrapper.classList.add('message-content-wrapper');
+
+    const contentDiv = document.createElement('div');
+    contentDiv.classList.add('content');
+
+    if (role === 'assistant') {
+        // Parse Markdown to HTML
+        const rawHtml = marked.parse(content);
+        // Sanitize the HTML
+        const sanitizedHtml = DOMPurify.sanitize(rawHtml);
+        // Set the sanitized HTML
+        contentDiv.innerHTML = sanitizedHtml;
+    } else {
+        // Escape HTML for user messages to prevent XSS if user inputs malicious code
+        contentDiv.textContent = content;
+    }
+
+    // Timestamp
+    const timestampDiv = document.createElement('div');
+    timestampDiv.classList.add('timestamp');
+    timestampDiv.innerText = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+    contentWrapper.appendChild(contentDiv);
+    contentWrapper.appendChild(timestampDiv);
+
+    messageDiv.appendChild(contentWrapper);
+
+    // Append to conversation
+    const conversationContainer = document.getElementById('conversationContainer');
     conversationContainer.appendChild(messageDiv);
 
-    // Scroll to the bottom of the conversation container
-    conversationContainer.scrollTop = conversationContainer.scrollHeight;
+    // Scroll to the bottom smoothly
+    conversationContainer.scrollTo({
+        top: conversationContainer.scrollHeight,
+        behavior: 'smooth'
+    });
 }
+
 
 // Function to update the conversation with all messages
 function updateConversation(messages) {
